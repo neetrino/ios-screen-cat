@@ -1,7 +1,5 @@
 :root {
   --bg-base: #eef1f6;
-  --bg-mesh-a: rgba(99, 102, 241, 0.07);
-  --bg-mesh-b: rgba(14, 165, 233, 0.06);
   --surface: rgba(255, 255, 255, 0.82);
   --surface-solid: #ffffff;
   --ink: #0f172a;
@@ -33,10 +31,6 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg-base);
-  background-image:
-    radial-gradient(ellipse 100% 80% at 50% -20%, var(--bg-mesh-a), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 100% 50%, var(--bg-mesh-b), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 0% 80%, rgba(99, 102, 241, 0.05), transparent 45%);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
@@ -108,17 +102,7 @@ code {
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.15;
-  background: linear-gradient(135deg, var(--ink) 0%, #334155 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@supports not (background-clip: text) {
-  .hero-title {
-    color: var(--ink);
-    background: none;
-  }
+  color: var(--ink);
 }
 
 .hero-sub {
@@ -155,12 +139,11 @@ code {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), #38bdf8);
-  opacity: 0.85;
+  background: var(--accent);
 }
 
 .panel[data-device="ipad"]::before {
-  background: linear-gradient(90deg, #7c3aed, #a78bfa);
+  background: #7c3aed;
 }
 
 .panel-head {
@@ -222,7 +205,7 @@ code {
   text-align: center;
   cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  background: #f8fafc;
 }
 
 .dropzone:hover,
@@ -392,7 +375,7 @@ code {
   right: 0;
   z-index: 10;
   padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
-  background: linear-gradient(180deg, rgba(238, 241, 246, 0) 0%, rgba(238, 241, 246, 0.92) 28%, rgba(238, 241, 246, 0.98) 100%);
+  background: rgba(238, 241, 246, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--line);
@@ -436,7 +419,7 @@ code {
   border: none;
   cursor: pointer;
   color: #fff;
-  background: linear-gradient(180deg, #3b82f6 0%, var(--accent) 55%, var(--accent-hover) 100%);
+  background: var(--accent);
   box-shadow: 0 4px 14px var(--accent-glow), 0 1px 2px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.2s ease;
 }
@@ -470,6 +453,7 @@ code {
 
 .btn-primary:not(:disabled):hover {
   transform: translateY(-1px);
+  background: var(--accent-hover);
   box-shadow: 0 8px 24px var(--accent-glow), 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
