@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>App Store Screenshots — обрезка под Connect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <p class="hero-kicker">App Store Connect</p>
+        <h1 class="hero-title">Скриншоты для Connect</h1>
+        <p class="hero-sub">
+          Авто-размер по ближайшему допустимому соотношению или свой пресет — затем ZIP с
+          <code>iphone/</code> и <code>ipad/</code>.
+        </p>
+      </header>
+
+      <main class="panels">
+        <section class="panel" data-device="iphone">
+          <div class="panel-head">
+            <span class="panel-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="4" width="36" height="64" rx="6" stroke="currentColor" stroke-width="2" />
+                <circle cx="24" cy="58" r="2" fill="currentColor" />
+              </svg>
+            </span>
+            <div>
+              <h2 class="panel-title">iPhone</h2>
+              <p class="panel-hint">PNG / JPEG · несколько файлов</p>
+            </div>
+          </div>
+          <div class="dropzone" tabindex="0" role="button" aria-label="Зона загрузки iPhone">
+            <input class="file-input" type="file" accept="image/png,image/jpeg,image/jpg" multiple hidden />
+            <p class="dropzone-text">Перетащите сюда или нажмите для выбора</p>
+          </div>
+          <div class="panel-tools">
+            <label class="field">
+              <span class="field-label">Пресет</span>
+              <select class="preset-select" data-role="iphone-preset"></select>
+            </label>
+          </div>
+          <ul class="file-list" data-list="iphone"></ul>
+        </section>
+
+        <section class="panel" data-device="ipad">
+          <div class="panel-head">
+            <span class="panel-icon panel-icon--wide" aria-hidden="true">
+              <svg viewBox="0 0 72 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="6" width="64" height="36" rx="5" stroke="currentColor" stroke-width="2" />
+                <circle cx="36" cy="41" r="1.5" fill="currentColor" />
+              </svg>
+            </span>
+            <div>
+              <h2 class="panel-title">iPad</h2>
+              <p class="panel-hint">PNG / JPEG · несколько файлов</p>
+            </div>
+          </div>
+          <div class="dropzone" tabindex="0" role="button" aria-label="Зона загрузки iPad">
+            <input class="file-input" type="file" accept="image/png,image/jpeg,image/jpg" multiple hidden />
+            <p class="dropzone-text">Перетащите сюда или нажмите для выбора</p>
+          </div>
+          <div class="panel-tools">
+            <label class="field">
+              <span class="field-label">Пресет</span>
+              <select class="preset-select" data-role="ipad-preset"></select>
+            </label>
+          </div>
+          <ul class="file-list" data-list="ipad"></ul>
+        </section>
+      </main>
+
+      <footer class="actions">
+        <button type="button" class="btn-primary" id="btn-zip" disabled>
+          Обрезать и скачать ZIP
+        </button>
+        <p class="actions-note" id="status-note"></p>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous"></script>
+    <script src="presets.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
