@@ -5,6 +5,9 @@
   /** @typedef {{ id: string, w: number, h: number, label: string }} Preset */
   /** @typedef {{ id: string, file: File, w: number, h: number, url: string }} Queued */
 
+  /** Макс. скриншотов на слот (App Store Connect). */
+  const MAX_SCREENSHOTS_PER_SLOT = 10;
+
   /** @type {{ iphone: Queued[], ipad: Queued[] }} */
   const queues = { iphone: [], ipad: [] };
 
@@ -35,7 +38,7 @@
     el.innerHTML = "";
     const auto = document.createElement("option");
     auto.value = "auto";
-    auto.textContent = "Авто — ближайшее соотношение к оригиналу";
+    auto.textContent = "Авто — ближайший размер из списка Connect";
     el.appendChild(auto);
     for (const p of presets) {
       const o = document.createElement("option");
@@ -73,7 +76,17 @@
       statusNote.classList.add("is-error");
       return;
     }
-    for (const file of list) {
+    const room = MAX_SCREENSHOTS_PER_SLOT - queues[slot].length;
+    if (room <= 0) {
+      statusNote.textContent = `Не больше ${MAX_SCREENSHOTS_PER_SLOT} скриншотов на ${slot === "iphone" ? "iPhone" : "iPad"}.`;
+      statusNote.classList.add("is-error");
+      return;
+    }
+    const toAdd = list.slice(0, room);
+    if (toAdd.length < list.length) {
+      statusNote.textContent = `Добавлено ${toAdd.length} из ${list.length} (лимит ${MAX_SCREENSHOTS_PER_SLOT} скриншотов на слот).`;
+    }
+    for (const file of toAdd) {
       const url = URL.createObjectURL(file);
       const img = new Image();
       img.onload = () => {
